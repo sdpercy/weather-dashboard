@@ -2,7 +2,7 @@
 
 moment().format('L');
 
-// Search function to get the current City Weather
+// Search function to get the current City Weather from openweather
 
 function searchCityWeather(searchCityEl) {
 
