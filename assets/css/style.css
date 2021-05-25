@@ -1,0 +1,41 @@
+:root{
+    --secondarybtn-color:rgba(230, 230, 233, 0.801);
+    
+}
+.container{
+    width:100%;
+}
+.header{
+    background-image: linear-gradient(to right,rgb(152, 168, 240) , rgb(51, 5, 126));
+    text-align: center;
+    color: white;
+    font-family: sans-serif;
+}
+
+hr.solid {
+    border-top: 3px solid rgba(187, 187, 187, 0.37);
+  }
+  
+.currentweather{
+    border: 1px solid black;
+    margin-top: 10px;
+    height: 200px;
+    
+}
+
+.fivedayforcast{
+    padding-top: 10px;
+}
+
+.btn-secondary{
+    background-color: var(--secondarybtn-color);
+    color: black;
+    font-weight: bold;
+}
+
+.column {
+    float: left;
+    width: 25%;
+    padding: 0 10px;
+  }
+  
