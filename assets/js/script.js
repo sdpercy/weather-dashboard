@@ -1,5 +1,3 @@
-
-
 moment().format('L');
 
 // Search function to get the current City Weather from openweather
@@ -154,7 +152,7 @@ function previousSearch () {
 
 //get weather for recently searched items
 
-$("#recenthistory").on("click", function(event){
+$("#recenthistory").on("click", '.btn', function(event){
     event.preventDefault();
     searchCityWeather($(this).text());
 });
