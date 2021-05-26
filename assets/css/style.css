@@ -15,7 +15,15 @@
 hr.solid {
     border-top: 3px solid rgba(187, 187, 187, 0.37);
   }
-  
+ 
+.btn-primary {
+    height: 50px;
+}
+
+.form-control{
+    height: 50px;
+}
+
 .currentweather{
     border: 1px solid black;
     margin-top: 10px;
@@ -37,5 +45,6 @@ hr.solid {
     float: left;
     width: 25%;
     padding: 0 10px;
-  }
+}
+
   

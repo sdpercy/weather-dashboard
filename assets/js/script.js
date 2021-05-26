@@ -14,7 +14,9 @@ function searchCityWeather(searchCityEl) {
         return response.json();
       })
     .then(function(response) {
-    
+        //Remove previously searched data
+        $('#currentweather').empty();
+
         var currentDate = moment().format('L');
         var cityNameEl = $('<h3>').text(response.name);
         var displayDate = cityNameEl.append(" " + currentDate);
@@ -49,7 +51,7 @@ function searchCityWeather(searchCityEl) {
 
         $('#currentweather').html(currentWeatherDiv);
 
-        //populate UV
+        //populate UV index
 
         fetch("https://api.openweathermap.org/data/2.5/onecall?&appid=f8d11b4cf79d3c3e9c639576025ce0ca&lat=" + lat + "&lon=" + lon)
 
@@ -64,6 +66,7 @@ function searchCityWeather(searchCityEl) {
         })  
         
     });
+//------- fetch data for 5 Day forcast --------------
 
         fetch("https://api.openweathermap.org/data/2.5/forecast?q=" + 
         searchCityEl + 
@@ -75,6 +78,7 @@ function searchCityWeather(searchCityEl) {
         .then(function(response) {
             
             var results = response.list;
+            $("#fiveday").empty();
             //create the cards for the five day forcast
             for (var i = 0; i < results.length; i +=8){
 
@@ -116,7 +120,9 @@ function searchCityWeather(searchCityEl) {
         }
 
     });    
-};
+}
+
+previousSearch ();
 
 $("#searchbtn").on("click", function(event){
     //prevent button from submitting form
@@ -128,11 +134,27 @@ $("#searchbtn").on("click", function(event){
     
     //save search result to localstorage
 
-    //var inputTextEl = $(this).siblings("input").val();
-    //var storearray = [];
-    //storearray.push(inputTextEl);
-    //localstorage.setItem('cityname', JSON.stringify(storearray));
+    
+    var storearray = [];
+    storearray.push(searchCityEl);
+    localStorage.setItem('cityname', JSON.stringify(storearray));
 
     searchCityWeather(searchCityEl);
+    previousSearch ();
+});
 
+function previousSearch () {
+    var lastSearch = JSON.parse(localStorage.getItem('cityname'));
+    var lastSearchBtns = $("<button class='btn btn-secondary'>").text(lastSearch);
+
+    var lastSearchList = $("<div class='d-grid gap-2'>");
+    lastSearchList.append(lastSearchBtns)
+    $("#recenthistory").prepend(lastSearchList);
+}
+
+//get weather for recently searched items
+
+$("#recenthistory").on("click", function(event){
+    event.preventDefault();
+    searchCityWeather($(this).text());
 });
