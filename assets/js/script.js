@@ -71,11 +71,9 @@ function searchCityWeather(searchCityEl) {
                 $("#uvindex").css("color", "yellow");
             }else if (uvindex >=6 && uvindex < 8){
             $("#uvindex").css("color", "orange");
-            } else if (uvindex >=8 && uvindex <=10){
+            } else if (uvindex >=8){
                 $("#uvindex").css("color", "red"); 
-            } else if (uvindex >=11){
-                $("#uvindex").css("color", "purple"); 
-            }
+            } 
         })  
         
     });
