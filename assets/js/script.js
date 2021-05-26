@@ -25,12 +25,13 @@ function searchCityWeather(searchCityEl) {
         var humidityEl = $("<p>").text("Humidity: " + response.main.humidity);
         var windEl = $("<p>").text("Wind: " + response.wind.speed);
         var currentWeather = response.weather[0].main;
+        var lat = response.coord.lat;
+        var lon = response.coord.lon;
 
         //Get the icon that matches the current weather for the current city
         if (currentWeather === "Rain"){
             var weatherIconEl = $('<img>').attr("src", "http://openweathermap.org/img/wn/09d.png");
             weatherIconEl.attr("style", "height: 35px; width: 35px;");
-            displayDate.append(weatherIconEl);
         } else if (currentWeather === "Clouds"){
             var weatherIconEl = $('<img>').attr("src", "http://openweathermap.org/img/wn/03d.png");
             weatherIconEl.attr("style", "height: 35px; width: 35px;");
@@ -54,17 +55,18 @@ function searchCityWeather(searchCityEl) {
 
         //populate UV
 
-       /* var lat = response.coord.lat;
-        var lon = response.coord.lon;
+        fetch("https://api.openweathermap.org/data/2.5/onecall?&appid=f8d11b4cf79d3c3e9c639576025ce0ca&lat=" + lat + "&lon=" + lon)
 
-        fetch("https://api.openweathermap.org/data/2.5/onecall?&appid=f8d11b4cf79d3c3e9c639576025ce0calat=" + lat + "&lon=" + lon)
-
-        .then(response => response.json())
+        .then(function(response) {
+            return response.json();
+          })
         
-        .then(function(data){
-            console.log(data);
-
-        }) */   
+        .then(function(response){
+            console.log(response.data);
+            var uvindexEl = $("<p>").text("UV Index: " + response.current.uvi);
+            currentWeatherDiv.append(uvindexEl);
+            $('#currentweather').html(currentWeatherDiv);
+        })  
         
     })
 };
