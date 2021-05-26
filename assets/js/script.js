@@ -145,7 +145,7 @@ function previousSearch () {
     var lastSearch = JSON.parse(localStorage.getItem('cityname'));
     var lastSearchBtns = $("<button class='btn btn-secondary'>").text(lastSearch);
 
-    var lastSearchList = $("<div class='d-grid gap-2'>");
+    var lastSearchList = $("#recent");
     lastSearchList.append(lastSearchBtns)
     $("#recenthistory").prepend(lastSearchList);
 }
