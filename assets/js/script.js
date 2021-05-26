@@ -18,9 +18,9 @@ function searchCityWeather(searchCityEl) {
         var currentDate = moment().format('L');
         var cityNameEl = $('<h3>').text(response.name);
         var displayDate = cityNameEl.append(" " + currentDate);
-        var temperatureEl = $("<p>").text("Temperature: " + response.main.temp);
-        var humidityEl = $("<p>").text("Humidity: " + response.main.humidity);
-        var windEl = $("<p>").text("Wind: " + response.wind.speed);
+        var temperatureEl = $("<p>").text("Temperature: " + response.main.temp + "°F");
+        var humidityEl = $("<p>").text("Humidity: " + response.main.humidity + "%");
+        var windEl = $("<p>").text("Wind: " + response.wind.speed + " MPH");
         var currentWeather = response.weather[0].main;
         var lat = response.coord.lat;
         var lon = response.coord.lon;
@@ -58,9 +58,24 @@ function searchCityWeather(searchCityEl) {
           })
         
         .then(function(response){
-            var uvindexEl = $("<p>").text("UV Index: " + response.current.uvi);
+            
+            var uvindexEl = $("<p id='uvindex'>").text("UV Index: " + response.current.uvi);
             currentWeatherDiv.append(uvindexEl);
             $('#currentweather').html(currentWeatherDiv);
+            //change text color based on UV index in Canada (https://www.canada.ca/en/environment-climate-change/services/weather-health/uv-index-sun-safety.html)
+            var uvindex = response.current.uvi;
+            
+            if (uvindex < 3){
+                $("#uvindex").css("color", "green");
+            }else if (uvindex >=3 && uvindex < 6){
+                $("#uvindex").css("color", "yellow");
+            }else if (uvindex >=6 && uvindex < 8){
+            $("#uvindex").css("color", "orange");
+            } else if (uvindex >=8 && uvindex <=10){
+                $("#uvindex").css("color", "red"); 
+            } else if (uvindex >=11){
+                $("#uvindex").css("color", "purple"); 
+            }
         })  
         
     });
@@ -88,8 +103,8 @@ function searchCityWeather(searchCityEl) {
             var fiveDayHum = results[i].main.humidity;
 
             var fiveDayDateEl = $("<h4 class='cardtitle'>").text(setdate);
-            var fiveDayTempEl = $("<p class='cardtext'>").text("Temp: " + fiveDayTemp);
-            var fiveDayHumEl = $("<p class='cardtext'>").text("Humidity: " + fiveDayHum);
+            var fiveDayTempEl = $("<p class='cardtext'>").text("Temp: " + fiveDayTemp + "°F");
+            var fiveDayHumEl = $("<p class='cardtext'>").text("Humidity: " + fiveDayHum + "%");
 
             var fivedayweather = results[i].weather[0].main;
 

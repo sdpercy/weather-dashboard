@@ -6,7 +6,7 @@
     width:100%;
 }
 .header{
-    background-image: linear-gradient(to right,rgb(152, 168, 240) , rgb(51, 5, 126));
+    background-image: linear-gradient(to right,#0d6efd , rgb(3, 2, 85));
     text-align: center;
     color: white;
     font-family: sans-serif;
@@ -25,10 +25,10 @@ hr.solid {
 }
 
 .currentweather{
-    border: 1px solid black;
+    background-color:#6c8dd3;
     margin-top: 10px;
     height: 250px;
-    
+    border: 1px solid black;
 }
 
 .fivedayforcast{
