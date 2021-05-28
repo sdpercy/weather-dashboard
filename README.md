@@ -17,4 +17,5 @@
 HTML, Bootstrap, jQuery and Javascript.
 API used - Open Weather.
 
-## Application URL:
+## Application URL:https://sdpercy.github.io/weather-dashboard/
+![image](https://user-images.githubusercontent.com/78440638/119977394-f1ee7880-bf92-11eb-8523-7410a7029036.png)
