@@ -1,6 +1,6 @@
 # Weather-Dashboard
 
-##Instructions
+## Instructions
 
 1. Input city/town you would like to see the weather
 2. Click Search button you will be presented with the following:
