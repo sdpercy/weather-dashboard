@@ -12,4 +12,9 @@
       - displays the date, an icon representation of weather conditions, the temperature, the wind speed, and the humidity
 6. Click on a city in the search history to display the weather again.
 
+## Technology Used:
+
+HTML, Bootstrap, jQuery and Javascript.
+API used - Open Weather.
+
 ## Application URL:
